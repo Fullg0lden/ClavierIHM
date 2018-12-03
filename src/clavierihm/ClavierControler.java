@@ -17,13 +17,12 @@ import javafx.scene.Cursor;
 public class ClavierControler implements EventHandler {
 
     private ClavierView view;
-    private ClavierModel model;
+  
     //private int lastLine = 0;
     //private int nextLine = 0;
 
-    ClavierControler(ClavierView view, ClavierModel model) {
+    ClavierControler(ClavierView view) {
         this.view = view;
-        this.model = model;
     }
 
     @Override
@@ -42,6 +41,12 @@ public class ClavierControler implements EventHandler {
                     this.view.textArea.positionCaret(this.view.textArea.getCaretPosition() - 1);
                 } else if (event.getSource().equals(this.view.chevrons)) {
                     this.view.textArea.insertText(caret, "<>");
+                } else if (event.getSource().equals(this.view.dollar)) {
+                    this.view.textArea.insertText(caret, "€");
+                } else if (event.getSource().equals(this.view.pointExclam)) {
+                    this.view.textArea.insertText(caret, "?");
+                } else if (event.getSource().equals(this.view.pipe)) {
+                    this.view.textArea.insertText(caret, "&");
                 } else {
                     this.view.textArea.insertText(caret, ((Touche) event.getSource()).getText().toUpperCase());
                 }
@@ -105,6 +110,12 @@ public class ClavierControler implements EventHandler {
                     this.view.textArea.positionCaret(0);
                 } else if (event.getSource().equals(this.view.fin)) {
                     this.view.textArea.positionCaret(Integer.MAX_VALUE);
+                } else if (event.getSource().equals(this.view.dollar)) {
+                    this.view.textArea.insertText(caret, "$");
+                } else if (event.getSource().equals(this.view.pointExclam)) {
+                    this.view.textArea.insertText(caret, "!");
+                } else if (event.getSource().equals(this.view.pipe)) {
+                    this.view.textArea.insertText(caret, "|");
                 } else {
                     this.view.textArea.insertText(caret, ((Touche) event.getSource()).getText());
                 }
